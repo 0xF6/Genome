@@ -46,7 +46,7 @@
 </p>
 
 ##### TODO
-- [ ] S.M.I.L.E. Tools (models and parser)
+- [ ] S.M.I.L.E.S. Tools (Simplified molecular-input line-entry system models and parser)
 - [ ] Genetic Code parser
 - [ ] DNA\RNA Mutator
 - [ ] Visual mutation monitor
