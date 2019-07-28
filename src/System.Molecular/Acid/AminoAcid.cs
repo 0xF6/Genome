@@ -1,8 +1,10 @@
 ﻿namespace System.Molecular.Acid
 {
     using Amino;
+    using JetBrains.Annotations;
     using Linq;
 
+    [PublicAPI]
     public abstract class AminoAcid
     {
         public string FullName => this.GetType().Name;
@@ -34,6 +36,23 @@
                 case ('A', 'U', 'U'): case ('A', 'U', 'C'):
                 case ('A', 'U', 'A'):
                     return new Isoleucine();
+                case ('A', 'U', 'G'): // start protein generation
+                    return new Methionine();
+                case ('G', 'U', 'U'): case ('G', 'U', 'A'):
+                case ('G', 'U', 'C'): case ('G', 'U', 'G'):
+                    return new Valine();
+                case ('U', 'C', 'U'): case ('U', 'C', 'A'):
+                case ('U', 'C', 'C'): case ('U', 'C', 'G'):
+                    return new Serine();
+                case ('C', 'C', 'U'): case ('C', 'C', 'A'):
+                case ('C', 'C', 'C'): case ('C', 'C', 'G'):
+                    return new Proline();
+                case ('A', 'C', 'U'): case ('A', 'C', 'A'):
+                case ('A', 'C', 'C'): case ('A', 'C', 'G'):
+                    return new Threonine();
+                case ('G', 'C', 'U'): case ('G', 'C', 'A'):
+                case ('G', 'C', 'C'): case ('G', 'C', 'G'):
+                    return new Alanine();
             }
             return new UnknownAcid();
         }
