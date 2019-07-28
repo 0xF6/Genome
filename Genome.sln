@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29021.104
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9167B206-D31E-42B3-8467-83E97B8F3826}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0B942A69-C514-4FB0-B4BE-C45F9470B93E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Molecular", "src\System.Molecular\System.Molecular.csproj", "{6B5931D2-B64E-4B7B-A232-141641AA1B8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B5931D2-B64E-4B7B-A232-141641AA1B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5931D2-B64E-4B7B-A232-141641AA1B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5931D2-B64E-4B7B-A232-141641AA1B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5931D2-B64E-4B7B-A232-141641AA1B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B5931D2-B64E-4B7B-A232-141641AA1B8A} = {0B942A69-C514-4FB0-B4BE-C45F9470B93E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D26D86AA-9739-407C-A01E-5C6422ABC925}
+	EndGlobalSection
+EndGlobal
