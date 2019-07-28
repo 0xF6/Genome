@@ -49,7 +49,8 @@
 - [ ] S.M.I.L.E. Tools (models and parser)
 - [ ] Genetic Code parser
 - [ ] DNA\RNA Mutator
-
+- [ ] Visual mutation monitor
+- [ ] Mutation graphs
 
   
 
