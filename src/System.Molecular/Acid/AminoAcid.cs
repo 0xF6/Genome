@@ -18,9 +18,10 @@
 
         
 
-        public static AminoAcid By(string code) => By(code.ToArray());
 
-        public static AminoAcid By(params char[] code)
+        public static AminoAcid Translate(string code) => Translate(code.ToArray());
+
+        public static AminoAcid Translate(params char[] code)
         {
             if(code.Length != 3) 
                 throw new ArgumentException($"amino-acid code must be 3 characters.");
@@ -43,6 +44,7 @@
                     return new Valine();
                 case ('U', 'C', 'U'): case ('U', 'C', 'A'):
                 case ('U', 'C', 'C'): case ('U', 'C', 'G'):
+                case ('A', 'G', 'U'): case ('A', 'G', 'C'):
                     return new Serine();
                 case ('C', 'C', 'U'): case ('C', 'C', 'A'):
                 case ('C', 'C', 'C'): case ('C', 'C', 'G'):
@@ -53,6 +55,36 @@
                 case ('G', 'C', 'U'): case ('G', 'C', 'A'):
                 case ('G', 'C', 'C'): case ('G', 'C', 'G'):
                     return new Alanine();
+                case ('U', 'A', 'U'): case ('U', 'A', 'C'):
+                    return new Tyrosine();
+                case ('C', 'A', 'U'): case ('C', 'A', 'C'):
+                    return new Histidine();
+                case ('C', 'A', 'A'): case ('C', 'A', 'G'):
+                    return new Glutamine();
+                case ('A', 'A', 'U'): case ('A', 'A', 'C'):
+                    return new Glutamine();
+                case ('A', 'A', 'A'): case ('A', 'A', 'G'):
+                    return new Lysine();
+                case ('G', 'A', 'U'): case ('G', 'A', 'C'):
+                    return new AsparticAcid();
+                case ('G', 'A', 'A'): case ('G', 'A', 'G'):
+                    return new GlutamicAcid();
+                case ('U', 'G', 'U'): case ('U', 'G', 'C'):
+                    return new Cysteine();
+                case ('U', 'G', 'G'): 
+                    return new Tryptophan();
+                case ('C', 'G', 'U'): case ('C', 'G', 'C'):
+                case ('C', 'G', 'A'): case ('C', 'G', 'G'):
+                case ('A', 'G', 'A'): case ('A', 'G', 'G'):
+                    return new Cysteine();
+                case ('G', 'G', 'C'): case ('G', 'G', 'U'):
+                case ('G', 'G', 'A'): case ('G', 'G', 'G'):
+                    return new Glycine();
+                // stop
+                case ('U', 'G', 'A'): return new Opal();
+                case ('U', 'A', 'A'): return new Orche();
+                case ('U', 'A', 'G'): return new Amber();
+                
             }
             return new UnknownAcid();
         }
@@ -65,6 +97,10 @@
             this.Symbol = sym;
             this.State = state;
         }
+
+        #region Overrides of Object
+        public override string ToString() => $"{ShortName}/{Symbol}";
+        #endregion
     }
     /// <summary>
     /// Amino acids biochemical properties
