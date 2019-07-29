@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Molecular", "src\Sys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Molecular.Test", "test\System.Molecular.Test\System.Molecular.Test.csproj", "{AF15772C-6113-4F3A-BA2C-A081EA74129C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "byte2dnk", "src\byte2dnk\byte2dnk.csproj", "{23827701-1D6D-4B90-8EB2-E98187CEACE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{AF15772C-6113-4F3A-BA2C-A081EA74129C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF15772C-6113-4F3A-BA2C-A081EA74129C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF15772C-6113-4F3A-BA2C-A081EA74129C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23827701-1D6D-4B90-8EB2-E98187CEACE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23827701-1D6D-4B90-8EB2-E98187CEACE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23827701-1D6D-4B90-8EB2-E98187CEACE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23827701-1D6D-4B90-8EB2-E98187CEACE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6B5931D2-B64E-4B7B-A232-141641AA1B8A} = {0B942A69-C514-4FB0-B4BE-C45F9470B93E}
 		{AF15772C-6113-4F3A-BA2C-A081EA74129C} = {9167B206-D31E-42B3-8467-83E97B8F3826}
+		{23827701-1D6D-4B90-8EB2-E98187CEACE4} = {0B942A69-C514-4FB0-B4BE-C45F9470B93E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D26D86AA-9739-407C-A01E-5C6422ABC925}
