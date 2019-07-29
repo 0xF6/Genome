@@ -22,6 +22,7 @@
         /// </summary>
         public AminoAcid Acid { get; }
 
+        public Codon(IEnumerable<string> code) : this(code.SelectMany(x => x)) { }
         public Codon(IEnumerable<char> code) : this(string.Join("", code.ToArray())) { }
 
         public Codon(string code)
@@ -48,6 +49,7 @@
 
         public override string ToString() => $"{Value}";
         public string ToFullString() => $"{Value} {Acid}";
+        public string ToFullBigString() => $"{Value} {Acid.ToFullString()}";
 
         #endregion
     }

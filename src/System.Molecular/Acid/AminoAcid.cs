@@ -100,6 +100,8 @@
 
         #region Overrides of Object
         public override string ToString() => $"{ShortName}/{Symbol}";
+        public string ToFullString() => $"[{Formula}] {FullName}/{Symbol} - {State}";
+
         #endregion
     }
     /// <summary>
