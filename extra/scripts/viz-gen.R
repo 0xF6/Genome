@@ -1,10 +1,9 @@
 library(ggbio)
 library(GenomicRanges)
-library(Gviz)
-p.ideo <- Ideogram(genome = "hg19")
-p.ideo + xlim(GRanges("chr2", IRanges(1e8, 1e8+10000000))) 
-
-p <- p + circle(gr.crc1, geom = "link", linked.to = "to.gr", aes(color = rearrangements),
-radius = 23)
-
+p <- ggbio()
+data("CRC", package = "biovizBase")
+head(hg19sub)
+p <- ggbio() + circle(hg19sub, geom = "ideo", fill = "gray70") +
+	+ circle(hg19sub, geom = "scale", size = 2) +
+	+ circle(hg19sub, geom = "text", aes(label = seqnames), vjust = 0, size = 3)
 p
