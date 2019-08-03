@@ -1,10 +1,12 @@
 ﻿namespace System.Collections.Sequence
 {
     using Generic;
+    using IO;
     using JetBrains.Annotations;
     using Linq;
     using Runtime.InteropServices;
     using Security;
+    using Text;
 
     public partial class F2Bit
     {
@@ -23,35 +25,32 @@
 
             public int _;
 
-            public static explicit operator int(Sequence e) => 1;
+            public byte[] DNA;
+
+            public string Raw => Encoding.ASCII.GetString(DNA);
 
             [SecurityCritical, UsedImplicitly]
-            internal static Sequence MarshalFrom(byte[] arr)
+            internal static Sequence MarshalFrom(UnmanagedMemoryStream stream)
             {
-                if(arr.Length < 6)
-                    throw new ArgumentException($"byte array less 6", nameof(arr));
-
-                static int[] readInt32Array(IntPtr ptr, int len, ref int offset)
+                static int[] readInt32Array(UnmanagedMemoryStream ptr, int len)
                 {
-                    var _offset = offset; // fuck cannot use ref inside lambda expression
-                    var result = Enumerable.Range(0, len)
-                        .Select(_ => (_offset += sizeof(int))).Select(ofs => Marshal.ReadInt32(ptr + ofs)).ToArray();
-                    offset = _offset;
-                    return result;
+                    return Enumerable.Range(0, len).Select(ofs => ptr.ReadInt32()).ToArray();
                 }
 
                 var seq    = new Sequence();
-                var offset = 0;
-                var ptr    = Marshal.AllocHGlobal(arr.Length);
-                Marshal.Copy(arr, 0, ptr, arr.Length);
 
-                seq.DNASize = Marshal.ReadInt32(ptr + offset);
-                offset += sizeof(int);
-                seq.BlockCount = Marshal.ReadInt32(ptr + offset);
-                offset += sizeof(int);
-                seq.BlockStarts = readInt32Array(ptr, seq.BlockCount, ref offset);
-                seq.BlockSizes = readInt32Array(ptr, seq.BlockCount, ref offset);
-                Marshal.FreeHGlobal(ptr);
+                seq.DNASize = stream.ReadInt32();
+                seq.BlockCount = stream.ReadInt32();
+                seq.BlockStarts = readInt32Array(stream, seq.BlockCount);
+                seq.BlockSizes = readInt32Array(stream, seq.BlockCount);
+
+                seq.MaskCount = stream.ReadInt32();
+                seq.MaskStarts = readInt32Array(stream, seq.MaskCount);
+                seq.MaskSizes = readInt32Array(stream, seq.MaskCount);
+
+                seq._ = stream.ReadInt32();
+                seq.DNA = stream.ReadBytes(4 * seq.DNASize);
+               
                 return seq;
             }
         }
