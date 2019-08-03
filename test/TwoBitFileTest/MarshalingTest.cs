@@ -18,9 +18,19 @@ namespace Tests
             arr.AddRange(Encoding.ASCII.GetBytes("test_name"));
             arr.AddRange(BitConverter.GetBytes(493));
 
-            var result = F2Bit.Index.MarshalFrom(arr.ToArray());
-            Assert.AreEqual("test_name", Encoding.ASCII.GetString(result.Name));
-            Assert.AreEqual(493, result.Offset);
+            //var result = F2Bit.Index.MarshalFrom(arr.ToArray());
+            //Assert.AreEqual("test_name", Encoding.ASCII.GetString(result.Name));
+            //Assert.AreEqual(493, result.Offset);
+        }
+        [Test]
+        public void HeadTest()
+        {
+            var arr = new List<byte>();
+        }
+        [Test]
+        public void ReadTest()
+        {
+            F2Bit.LoadFrom(@"C:\Users\io\Desktop\single_sequences.2bit");
         }
     }
 }
