@@ -45,16 +45,6 @@
   </a>
 </p>
 
-##### TODO
-- [ ] S.M.I.L.E.S. Tools (Simplified molecular-input line-entry system models and parser)
-- [ ] Genetic Code parser
-- [ ] DNA\RNA Mutator
-- [ ] Visual mutation monitor
-- [ ] Mutation graphs
-
-  
-
-
 <p align="center">
    <a href="https://ko-fi.com/P5P7YFY5">
     <img src="https://www.ko-fi.com/img/githubbutton_sm.svg">
