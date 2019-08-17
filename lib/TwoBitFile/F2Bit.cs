@@ -1,4 +1,4 @@
-﻿namespace System.Collections.Sequence
+namespace System.Collections.Sequence
 {
     using Generic;
     using IO;
@@ -14,6 +14,10 @@
         public List<Index> Indexes = new List<Index>();
         public List<Sequence> Sequences = new List<Sequence>();
 
+
+        public Sequence this[string chromoID]
+            => Sequences[Indexes.Select((model, index) => (model, index))
+                .First(x => x.model.FinalName.Equals(chromoID, StringComparison.OrdinalIgnoreCase)).index];
 
 
         public static F2Bit LoadFrom(string file) 
@@ -40,6 +44,8 @@
         {
             var file = new F2Bit();
             file.Header = Native.FromBytes<Head>(array.Take(sizeof(Head)).ToArray());
+            if(file.Header.Signature != 0x1A412743) 
+                throw new Exception("Invalid signature or wrong architecture."); 
             UnmanagedMemoryStream a = default;
             fixed (byte* p = &array[16])
                 a = new UnmanagedMemoryStream(p, array.Length - 16);
@@ -49,20 +55,20 @@
             for (var i = 0; i < file.Header.SeqCount; i++)
                 file.Sequences.Add(Sequence.MarshalFrom(a));
 
-            return null;
+            return file;
         }
     }
 
     internal static class Ex
     {
-        public static int ReadInt32(this UnmanagedMemoryStream stream)
+        public static int ReadInt32(this Stream stream)
         {
             var bytes = new byte[4];
             for (var i = 0; i < 4; i++)
                 bytes[i] = (byte)stream.ReadByte();
             return BitConverter.ToInt32(bytes, 0);
         }
-        public static byte[] ReadBytes(this UnmanagedMemoryStream stream, int len)
+        public static byte[] ReadBytes(this Stream stream, int len)
         {
             var bytes = new byte[len];
             for (var i = 0; i < len; i++)
